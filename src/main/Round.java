@@ -17,16 +17,16 @@ public class Round {
 
     public int playRound(){
 
-        Throw t = getNextThrow();
+        Throw t = getNextThrow(1);
         marker = t.getSlice();
         points += t.getThrowPoints();
         System.out.println("Round Points:" + points);
 
-        t = getNextThrow();
+        t = getNextThrow(2);
         addAdditionalDart(t);
         System.out.println("Round Points:" + points);
 
-        t = getNextThrow();
+        t = getNextThrow(3);
         addAdditionalDart(t);
         System.out.println("Round Points:" + points);
 
@@ -40,10 +40,10 @@ public class Round {
             points -= t.getThrowPoints();
     }
 
-    private Throw getNextThrow(){
+    private Throw getNextThrow(int dartNum){
         String dart = "";
         while(! Throw.validateThrowInput(dart)) {
-            System.out.println("Dart 3: ");
+            System.out.println("Dart "+dartNum+": ");
             dart = reader.nextLine();
         }
         return new Throw(dart);
